@@ -1,3 +1,0 @@
-# This file is used internally by FFMPEG.
-file 'file:/mnt/Shared/Git/Positive-Triangle-Game/media/videos/wheel/480p15/partial_movie_files/WheelGraph/921711572_2620218726_223132457.mp4'
-file 'file:/mnt/Shared/Git/Positive-Triangle-Game/media/videos/wheel/480p15/partial_movie_files/WheelGraph/544358931_2160960893_2399218386.mp4'
