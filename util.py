@@ -1,8 +1,8 @@
 class Complex:
-    def generate_vertices(self, n):
+    def generate_vertices(n):
         return [i for i in range(n)]
 
-    def generate_edges(self, n):
+    def generate_edges(n):
         edges = []
 
         # Draw edge between evey vertex
@@ -16,10 +16,10 @@ class Complex:
 
 
 class Wheel:
-    def generate_vertices(self, n):
+    def generate_vertices(n):
         return [i for i in range(n)]
 
-    def generate_edges(self, n):
+    def generate_edges(n):
         edges = [(1, n - 1)]
 
         # Generate outer cycles
@@ -60,10 +60,24 @@ class TriangleLadder:
         return edges
 
 class StrangeDual:
-    def generate_vertices(self, edges):
+    def generate_vertices(edges):
         return [i for i in range(len(edges))]
 
-    def generate_edges(self, edges):
-        pass
+    def generate_edges(edges):
+        ordered_edges = {}
+
+        for count, edge in enumerate(edges):
+            ordered_edges[count] = edge
+
+        print(edge)
+
+
+if __name__ == "__main__":
+    test = StrangeDual()
+
+    test_graph = Wheel.generate_edges(4)
+
+    print(test.generate_edges(test_graph))
+    )
 
 
