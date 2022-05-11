@@ -1,15 +1,16 @@
 from manim import *
+from util import *
 
 
-class Vertexify(Scene):
+class Ladder(Scene):
     def construct(self):
         self.camera.background_color = WHITE
         
         w = int(input())
 
-        graph = Graph(self.generate_vertices(w),
-                self.generate_edges(w),
-                layout="kamada_kawai").scale(1.5)
+        graph = Graph(TriangleLadder.generate_vertices(w),
+                TriangleLadder.generate_edges(w),
+                layout="spring").scale(1.5)
         graph.set_color(BLACK)
 
         # Make graph and text
