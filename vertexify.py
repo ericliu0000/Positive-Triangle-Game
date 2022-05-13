@@ -1,4 +1,5 @@
 from manim import *
+from util import *
 
 
 class Vertexify(Scene):
@@ -6,9 +7,10 @@ class Vertexify(Scene):
         self.camera.background_color = WHITE
         
         w = int(input())
+        test_edges = Wheel.generate_edges(w)
 
-        graph = Graph(self.generate_vertices(w),
-                self.generate_edges(w),
+        graph = Graph(StrangeDual.generate_vertices(test_edges),
+                StrangeDual.generate_edges(test_edges),
                 layout="kamada_kawai").scale(1.5)
         graph.set_color(BLACK)
 

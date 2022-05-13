@@ -66,6 +66,7 @@ class StrangeDual:
         return [i + 1 for i in range(len(edges))]
 
     def generate_edges(edges):
+        output = []
         ordered_edges = {}
 
         for count, edge in enumerate(edges):
@@ -77,13 +78,15 @@ class StrangeDual:
 
         for pair in possibilities:
             edge_pack = [ordered_edges[pair[0]][0], ordered_edges[pair[1]][0], ordered_edges[pair[0]][1], ordered_edges[pair[1]][1]]
-            print(edge_pack)
-            print(set(edge_pack))
-            print(list(set(edge_pack)) != edge_pack)
-            print("\n")
-            # Assuming there no self edges, 
+
             # check for duplicates in edge pack
-            # if set(edge_pack) != edge_pack:
+            if len(edge_pack) != len(set(edge_pack)):
+                output.append((pair[0], pair[1]))
+
+        print(f"output: {output}")
+
+        return output
+
 
 
 if __name__ == "__main__":
@@ -96,6 +99,6 @@ if __name__ == "__main__":
     
 
 
-    x = itertools.combinations(range(1, 7), 2)
-    for i in x:
-        print(i)
+    # x = itertools.combinations(range(1, 7), 2)
+    # for i in x:
+    #     print(i)
