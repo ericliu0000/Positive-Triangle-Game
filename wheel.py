@@ -19,10 +19,10 @@ class WheelGraph(Scene):
         # Make graph and text
         self.play(Create(graph))
 
-    def generate_vertices(n):
+    def generate_vertices(self, n):
         return [i for i in range(n)]
 
-    def generate_edges(n):
+    def generate_edges(self, n):
         edges = [(1, n - 1)]
 
         # Generate outer cycles

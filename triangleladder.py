@@ -21,14 +21,14 @@ class Ladder(Scene):
         # Make graph and text
         self.play(Create(graph))
 
-    def generate_vertices(n):
-        if (n % 2):
-            return
+    def generate_vertices(self, n):
+        # if (n % 2):
+        #     return
         return [i + 1 for i in range(n)]
 
-    def generate_edges(n: int):
-        if (n % 2):
-            return
+    def generate_edges(self, n):
+        # if (n % 2):
+        #     return
         edges = [(1, n)]
 
         # Generate outer cycle
