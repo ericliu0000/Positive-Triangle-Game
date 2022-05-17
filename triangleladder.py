@@ -3,6 +3,8 @@ from sys import argv
 
 
 class TriangleLadderGraph(Scene):
+    SPACING = 1
+
     def construct(self):
         self.camera.background_color = WHITE
 
@@ -15,11 +17,15 @@ class TriangleLadderGraph(Scene):
         # TODO: layout is ugly. please fix
         graph = Graph(self.generate_vertices(w),
                       self.generate_edges(w),
-                      layout={1: (-5, 0, 0), 2: (7, 0, 0), 3:(-4, -1, 0), 4:(7, -1, 0)})
+                      layout=self.generate_layout(w))
         graph.set_color(BLACK)
 
         # Make graph and text
         self.play(Create(graph))
+
+        for i in range(w):
+            self.play(Indicate(graph.vertices[i + 1]))
+            self.wait(0.5)
 
     def generate_vertices(self, n):
         return [i + 1 for i in range(n)]
@@ -41,4 +47,19 @@ class TriangleLadderGraph(Scene):
             for i in range(1, int(n / 2)):
                 edges.append((i, n - i))
 
+        print(edges)
         return edges
+
+
+    def generate_layout(self, n):
+        layout = {}
+
+        x_list = [(self.SPACING / 2) - (n / (4 / self.SPACING)) + (i * self.SPACING) for i in range(int(n / 2) + 1)]
+
+        for i in range(int(n / 2)):
+            layout[i + 1] = (x_list[i], self.SPACING / 2, 0)
+        for i in range(int(n / 2), n):
+            layout[i + 1] = (x_list[(n - i - 1)], -self.SPACING / 2, 0)
+
+        print(layout)
+        return layout
