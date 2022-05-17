@@ -45,5 +45,4 @@ class Ladder(Scene):
             for i in range(1, int(n / 2)):
                 edges.append((i, n - i))
 
-        print(edges)
         return edges
