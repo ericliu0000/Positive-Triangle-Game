@@ -47,8 +47,8 @@ class TriangleLadderGraph(Scene):
             for i in range(1, int(n / 2)):
                 edges.append((i, n - i))
 
-        # supplemental edge for odd number of vertices
-        if n % 2 == 1:
+        # Supplemental edge for odd number of vertices
+        if n % 2:
             edges.append((n // 2, n - n // 2 + 1))
 
         print(edges)
@@ -58,6 +58,7 @@ class TriangleLadderGraph(Scene):
     def generate_layout(self, n):
         layout = {}
 
+        # note: this breaks after big graphs
         x_list = [(self.SPACING / 2) - (n / (4 / self.SPACING)) + (i * self.SPACING) for i in range(int(n / 2) + 1)]
 
         for i in range(int(n / 2)):
@@ -65,5 +66,4 @@ class TriangleLadderGraph(Scene):
         for i in range(int(n / 2), n):
             layout[i + 1] = (x_list[(n - i - 1)], -self.SPACING / 2, 0)
 
-        print(layout)
         return layout
