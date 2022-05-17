@@ -1,11 +1,15 @@
 from manim import *
-
+from sys import argv
 
 class WheelGraph(Scene):
     def construct(self):
         self.camera.background_color = WHITE
 
-        w = int(input())
+        try:
+            w = int(argv[-1])
+        except ValueError as e:
+            w = 4
+            print("last argument specifies number of vertices")
 
         graph = Graph(self.generate_vertices(w),
                       self.generate_edges(w),

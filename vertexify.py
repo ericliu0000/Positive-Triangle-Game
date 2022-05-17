@@ -1,4 +1,5 @@
 from manim import *
+from sys import argv
 import wheel
 
 
@@ -6,7 +7,12 @@ class Vertexify(Scene):
     def construct(self):
         self.camera.background_color = WHITE
 
-        w = int(input())
+        try:
+            w = int(argv[-1])
+        except ValueError as e:
+            w = 4
+            print("last argument specifies number of vertices")
+
         test_edges = wheel.WheelGraph().generate_edges(w)
 
         # graph layout is finnicky
