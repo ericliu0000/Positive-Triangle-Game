@@ -39,13 +39,17 @@ class TriangleLadderGraph(Scene):
 
         # Generate vertical spokes
         if n >= 6:
-            for i in range(2, int(n / 2), 2):
+            for i in range(2, int(n / 2)):
                 edges.append((i, n - i + 1))
 
         # Generate diagonals
         if n >= 4:
             for i in range(1, int(n / 2)):
                 edges.append((i, n - i))
+
+        # supplemental edge for odd number of vertices
+        if n % 2 == 1:
+            edges.append((n // 2, n - n // 2 + 1))
 
         print(edges)
         return edges
