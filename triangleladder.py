@@ -2,7 +2,7 @@ from manim import *
 from sys import argv
 
 
-class Ladder(Scene):
+class TriangleLadderGraph(Scene):
     def construct(self):
         self.camera.background_color = WHITE
 
@@ -15,7 +15,7 @@ class Ladder(Scene):
         # TODO: layout is ugly. please fix
         graph = Graph(self.generate_vertices(w),
                       self.generate_edges(w),
-                      layout="spring").scale(1.5)
+                      layout={1: (-5, 0, 0), 2: (7, 0, 0), 3:(-4, -1, 0), 4:(7, -1, 0)}).scale(1.5)
         graph.set_color(BLACK)
 
         # Make graph and text
