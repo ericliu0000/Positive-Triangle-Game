@@ -15,7 +15,7 @@ class TriangleLadderGraph(Scene):
         # TODO: layout is ugly. please fix
         graph = Graph(self.generate_vertices(w),
                       self.generate_edges(w),
-                      layout={1: (-5, 0, 0), 2: (7, 0, 0), 3:(-4, -1, 0), 4:(7, -1, 0)}).scale(1.5)
+                      layout={1: (-5, 0, 0), 2: (7, 0, 0), 3:(-4, -1, 0), 4:(7, -1, 0)})
         graph.set_color(BLACK)
 
         # Make graph and text
