@@ -1,9 +1,10 @@
 from manim import *
 from sys import argv
+import math
 
 
 class TriangleLadderGraph(Scene):
-    SPACING = 1
+    SPACING = 1.5
 
     def construct(self):
         self.camera.background_color = WHITE
@@ -51,7 +52,6 @@ class TriangleLadderGraph(Scene):
         if n % 2:
             edges.append((n // 2, n - n // 2 + 1))
 
-        print(edges)
         return edges
 
 
@@ -59,11 +59,18 @@ class TriangleLadderGraph(Scene):
         layout = {}
 
         # note: this breaks after big graphs
-        x_list = [(self.SPACING / 2) - (n / (4 / self.SPACING)) + (i * self.SPACING) for i in range(int(n / 2) + 1)]
+        x_list = [(self.SPACING / 2) - (math.ceil(n / 2) / (2 / self.SPACING)) + (i * self.SPACING) for i in range(math.ceil(n / 2))]
+        print(x_list)
+        if (max(x_list) > 7):
+            # Scale x-list to be between -7 and 7
+            x_list = [x * (7 / max(x_list)) for x in x_list]
+        print(x_list)
+
 
         for i in range(int(n / 2)):
             layout[i + 1] = (x_list[i], self.SPACING / 2, 0)
         for i in range(int(n / 2), n):
             layout[i + 1] = (x_list[(n - i - 1)], -self.SPACING / 2, 0)
 
+        print(layout)
         return layout
