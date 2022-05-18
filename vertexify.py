@@ -1,7 +1,7 @@
 from manim import *
 from sys import argv
 import itertools
-import wheel
+import complex, wheel, triangleladder
 
 
 class Vertexify(Scene):
@@ -14,15 +14,16 @@ class Vertexify(Scene):
             w = 4
             print("last argument specifies number of vertices")
 
-        test_edges = wheel.WheelGraph().generate_edges(w)
+        test_edges = complex.ComplexGraph().generate_edges(w)
 
         graph = Graph(self.generate_vertices(test_edges),
                       self.generate_edges(test_edges),
-                      layout="kamada_kawai").scale(1.5)
+                      layout="spring").scale(1.5)
         graph.set_color(BLACK)
 
         # Make graph and text
         self.play(Create(graph))
+        print(len(graph.edges))
 
     def generate_vertices(self, edges):
         return [i + 1 for i in range(len(edges))]
