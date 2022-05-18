@@ -26,11 +26,23 @@ class Vertexify:
 
             if len(edge_pack) != len(set(edge_pack)):
                 common = set(e1).intersection(e2).pop()
-                print(common)
-                print(e1, e2)
+                print(f"1: {common}")
+                print(f"2: {e1} {e2}")
+
+                # Remove the common vertex
                 e1.remove(common)
                 e2.remove(common)
-                print(e1, e2, "\n")
+
+                print(f"3: {e1} {e2}")
+
+                # Get expected edge to complete face
+                missing = (e1[0], e2[0])
+                # missing2 = (e2[0], e1[0])
+
+                print(f"4: {missing in edges or missing[::-1] in edges}\n")
+
+                if missing in edges or missing[::-1] in edges:
+                    output.append((pair[0], pair[1]))
 
                 # if (e1[0], e2[0])
 
@@ -50,7 +62,7 @@ class Vertexify:
 
 if __name__ == "__main__":
 
-    test_graph = wheel.WheelGraph().generate_edges(4)
+    test_graph = wheel.WheelGraph().generate_edges(6)
 
     # print(StrangeDual.generate_vertices(test_graph))
     # print("\n\n\n")
