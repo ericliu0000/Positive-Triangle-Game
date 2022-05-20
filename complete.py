@@ -1,7 +1,7 @@
 from manim import *
 from sys import argv
 
-class ComplexGraph(Scene):
+class CompleteGraph(Scene):
     def construct(self):
         self.camera.background_color = WHITE
 
