@@ -25,6 +25,12 @@ class PowerLevel(Scene):
         #
         So, this is the <gradient from="GREEN" to="ORANGE">power level</gradient> of
         each edge in this graph. 
+        #
+        Here is another example, with
+        graph <span foreground="red">W<sub>5</sub></span>
+        #
+        For wheel graphs on <span underline="double" underline_color="orange">5 or more vertices</span>,
+        edge <gradient from="GREEN" to="ORANGE">power levels</gradient> follow this pattern.
         """
 
         text_objects = util.text_generator(text, DOWN)
@@ -34,8 +40,8 @@ class PowerLevel(Scene):
                   layout="planar").shift(UP)
 
         # Create PL labels (text with circle background)
-        edge_labels = [MarkupText("2", font_size=22, color=RED) for _ in range(6)]
-        edge_bg = [Circle(0.18, LIGHT_GRAY, fill_opacity=0.8) for _ in range(6)]
+        edge_labels = [MarkupText("2", font_size=PL_FONT_SIZE, color=YELLOW) for _ in range(6)]
+        edge_bg = [Circle(PL_CIRCLE_SIZE, LIGHT_PINK, fill_opacity=0.8) for _ in range(6)]
 
         for num, edge in enumerate(g.edges):
             edge_labels[num].move_to(g.edges[edge])
@@ -98,4 +104,40 @@ class PowerLevel(Scene):
                        [Uncreate(bg) for bg in edge_bg] + [Uncreate(label) for label in edge_labels],
                        Uncreate(g))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
+
+        # Create second graph (W5)
+        g = Graph(self.wheel.generate_vertices(5),
+                  self.wheel.generate_edges(5),
+                  layout="kamada_kawai").shift(UP * 1.5)
+
+        # Create PL labels for W5
+        edge_labels = [MarkupText("1", font_size=PL_FONT_SIZE, color=YELLOW) for _ in range(4)]
+        edge_labels += [MarkupText("2", font_size=PL_FONT_SIZE, color=YELLOW) for _ in range(4)]
+
+        edge_bg = [Circle(PL_CIRCLE_SIZE, LIGHT_PINK, fill_opacity=0.8) for _ in range(8)]
+
+        for num, edge in enumerate([(1, 2), (2, 3), (3, 4), (1, 4), (0, 1), (0, 2), (0, 3), (0, 4)]):
+            edge_labels[num].move_to(g.edges[edge])
+            edge_bg[num].move_to(g.edges[edge])
+
+        # Repopulate text and create graph
+        self.play(Create(g))
+        self.play(Create(text_objects[6][0]), Create(text_objects[6][1]))
+
+        # Create labels
+        self.play(*[Create(bg) for bg in edge_bg])
+        self.play(*[Write(label) for label in edge_labels])
+
+        # Cycle text
+        self.play(ReplacementTransform(text_objects[6][0], text_objects[7][0]),
+                  ReplacementTransform(text_objects[6][1], text_objects[7][1]))
+
+        self.wait(LONG_DWELL_TIME)
+
+        # Uncreate everything for the last time
+        util.bulk_play(self,
+                       [Uncreate(text_objects[7][0]), Uncreate(text_objects[7][1])],
+                       [Uncreate(bg) for bg in edge_bg] + [Uncreate(label) for label in edge_labels],
+                       Uncreate(g))
+
