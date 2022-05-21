@@ -28,4 +28,7 @@ def text_generator(text, ref):
 
 def bulk_play(self, *args, **kwargs):
     for arg in args:
-        self.play(arg, **kwargs)
+        if type(arg) == list:
+            self.play(*arg)
+        else:
+            self.play(arg, **kwargs)

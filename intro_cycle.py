@@ -90,4 +90,15 @@ class IntroCycle(Scene):
                        Create(plus_2),
                        Create(plus_3))
 
-        self.wait(LONG_DWELL_TIME)
+        self.wait(SHORT_DWELL_TIME)
+
+        # Uncreate everything
+        util.bulk_play(self,
+                       [Uncreate(plus_1),
+                        Uncreate(plus_2),
+                        Uncreate(plus_3)],
+                       [Uncreate(text_objects[4][0]),
+                           Uncreate(text_objects[4][1])],
+                       Uncreate(g))
+
+        self.wait(SHORT_DWELL_TIME)
