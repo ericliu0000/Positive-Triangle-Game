@@ -27,7 +27,7 @@ class PowerLevel(Scene):
         each edge in this graph. 
         #
         Here is another example, with
-        graph <span foreground="red">W<sub>5</sub></span>
+        <span foreground="red">W<sub>5</sub></span>
         #
         For wheel graphs on <span underline="double" underline_color="orange">5 or more vertices</span>,
         edge <gradient from="GREEN" to="ORANGE">power levels</gradient> follow this pattern.
@@ -123,7 +123,8 @@ class PowerLevel(Scene):
 
         # Repopulate text and create graph
         self.play(Create(g))
-        self.play(Create(text_objects[6][0]), Create(text_objects[6][1]))
+        self.play(Create(text_objects[6][0]))
+        self.play(Create(text_objects[6][1]))
 
         # Create labels
         self.play(*[Create(bg) for bg in edge_bg])
