@@ -17,9 +17,9 @@ class IntroCycle(Scene):
         #
         two minus signs,
 
-        # 
+        #
         or none.
-
+        
         """
 
         g = Graph(CompleteGraph().generate_vertices(3),
@@ -45,40 +45,40 @@ class IntroCycle(Scene):
         self.play(Create(g))
 
         # Create text, round 1
-        self.play(Create(text_objects[0][0]))
-        self.play(Create(text_objects[0][1]))
+        self.play(Create(text_objects[0][0]),
+                  Create(text_objects[0][1]))
 
         self.wait(SHORT_DWELL_TIME)
 
-        # Swap text 
+        # Swap text
         self.play(ReplacementTransform(text_objects[0][0], text_objects[1][0]),
                   ReplacementTransform(text_objects[0][1], text_objects[1][1]))
-        
+
         self.wait(SHORT_DWELL_TIME)
 
         # Swap text and add signs
         self.play(ReplacementTransform(text_objects[1][0], text_objects[2][0]),
-                    ReplacementTransform(text_objects[1][1], text_objects[2][1]),
-                    Create(plus_1),
-                    Create(minus_1))
+                  ReplacementTransform(text_objects[1][1], text_objects[2][1]),
+                  Create(plus_1),
+                  Create(minus_1))
 
         self.wait(SHORT_DWELL_TIME)
 
         # Swap text and move signs into position
         self.play(ReplacementTransform(text_objects[2][0], text_objects[3][0]),
-                    ReplacementTransform(text_objects[2][1], text_objects[3][1]),
-                    plus_1.animate(run_time=ANIMATION_TIME).next_to(g.edges[(1, 2)], LEFT * 1.5),
-                    minus_1.animate(run_time=ANIMATION_TIME).next_to(g.edges[(0, 2)], DOWN),
-                    Create(minus_2))
+                  ReplacementTransform(text_objects[2][1], text_objects[3][1]),
+                  plus_1.animate(run_time=ANIMATION_TIME).next_to(
+                      g.edges[(1, 2)], LEFT * 1.5),
+                  minus_1.animate(run_time=ANIMATION_TIME).next_to(
+                      g.edges[(0, 2)], DOWN),
+                  Create(minus_2))
 
         self.wait(SHORT_DWELL_TIME)
 
         # Swap text and cycle signs into last config
         self.play(ReplacementTransform(text_objects[3][0], text_objects[4][0]),
-                    ReplacementTransform(text_objects[3][1], text_objects[4][1]),
-                    ReplacementTransform(minus_1, plus_2),
-                    ReplacementTransform(minus_2, plus_3))
+                  ReplacementTransform(text_objects[3][1], text_objects[4][1]),
+                  ReplacementTransform(minus_1, plus_2),
+                  ReplacementTransform(minus_2, plus_3))
 
         self.wait(LONG_DWELL_TIME)
-
-

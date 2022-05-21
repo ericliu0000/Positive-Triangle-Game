@@ -3,7 +3,6 @@ from constants import *
 
 def text_generator(text, ref):
     lines = text.split("\n")
-    print(lines)
     groups = []
 
     temp = []
