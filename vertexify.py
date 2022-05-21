@@ -23,7 +23,6 @@ class Vertexify(Scene):
 
         # Make graph and text
         self.play(Create(graph))
-        print(len(graph.edges))
 
     def generate_vertices(self, edges):
         return [i + 1 for i in range(len(edges))]

@@ -23,10 +23,6 @@ class TriangleLadderGraph(Scene):
         # Make graph and text
         self.play(Create(graph))
 
-        for i in range(w):
-            self.play(Indicate(graph.vertices[i + 1]))
-            self.wait(0.5)
-
     def generate_vertices(self, n):
         return [i + 1 for i in range(n)]
 
