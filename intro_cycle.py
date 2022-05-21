@@ -5,6 +5,8 @@ import util
 
 
 class IntroCycle(Scene):
+    complete = CompleteGraph()
+
     def construct(self):
         text = """This is a 3-cycle graph.
         It looks like a triangle.
@@ -25,8 +27,8 @@ class IntroCycle(Scene):
         text_objects = util.text_generator(text, DOWN)
 
         # Make graph
-        g = Graph(CompleteGraph().generate_vertices(3),
-                  CompleteGraph().generate_edges(3),
+        g = Graph(self.complete.generate_vertices(3),
+                  self.complete.generate_edges(3),
                   layout="kamada_kawai").shift(UP)
 
         # Make signs

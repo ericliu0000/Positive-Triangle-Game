@@ -32,3 +32,11 @@ def bulk_play(self, *args, **kwargs):
             self.play(*arg)
         else:
             self.play(arg, **kwargs)
+
+def bulk_indicate_edges(self, graph, edges):
+    actions = []
+
+    for edge in edges:
+        actions.append(Indicate(graph.edges[edge], color=INDICATE_COLOR))
+
+    bulk_play(self, actions)
