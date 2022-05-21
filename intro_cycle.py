@@ -22,10 +22,14 @@ class IntroCycle(Scene):
         
         """
 
+        text_objects = util.text_generator(text, DOWN)
+
+        # Make graph
         g = Graph(CompleteGraph().generate_vertices(3),
                   CompleteGraph().generate_edges(3),
                   layout="kamada_kawai").shift(UP)
 
+        # Make signs
         plus_1 = SVGMobject(file_name="res/plus.svg").scale(PLUS_SCALE)
         plus_2 = plus_1.copy()
         plus_3 = plus_1.copy()
@@ -38,8 +42,6 @@ class IntroCycle(Scene):
         plus_3.move_to(g.edges[(0, 1)])
         minus_1.next_to(plus_1, RIGHT)
         minus_2.move_to(g.edges[(0, 1)])
-
-        text_objects = util.text_generator(text, DOWN)
 
         # Create graph
         self.play(Create(g))
