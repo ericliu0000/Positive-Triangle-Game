@@ -10,15 +10,15 @@ class IntroCycle(Scene):
         It looks like a triangle.
         #
         In this game, the goal is to end
-        with a positive triangle,
+        with a <span foreground="green">positive triangle</span>,
         #
-        having an odd number of positive edges,
-        and an even number of negative edges.
+        having an <span underline="single" underline_color="yellow">odd number</span> of positive edges,
+        and an <span underline="double" underline_color="red">even number</span> of negative edges.
         #
-        So, it can end with
+        So, the game ends with
         two minus signs,
         #
-        or none.
+        or no minus signs.
         
         """
 
