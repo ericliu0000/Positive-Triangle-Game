@@ -10,13 +10,13 @@ class IntroCycle(Scene):
         It looks like a triangle.
         #
         In this game, the goal is to end
-        with a positive triangle.
+        with a positive triangle,
         #
-        So, the game can end in these 
-        configurations after 3 moves:
+        having an odd number of positive edges,
+        and an even number of negative edges.
         #
+        So, it can end with
         two minus signs,
-
         #
         or none.
         
@@ -34,10 +34,10 @@ class IntroCycle(Scene):
 
         # Set positions
         plus_1.move_to((-6, 3, 0))
-        plus_2.next_to(g.edges[(0, 2)], DOWN)
-        plus_3.next_to(g.edges[(0, 1)], UP)
+        plus_2.move_to(g.edges[(0, 2)])
+        plus_3.move_to(g.edges[(0, 1)])
         minus_1.next_to(plus_1, RIGHT)
-        minus_2.next_to(g.edges[(0, 1)], UP)
+        minus_2.move_to(g.edges[(0, 1)])
 
         text_objects = util.text_generator(text, DOWN)
 
@@ -64,21 +64,28 @@ class IntroCycle(Scene):
 
         self.wait(SHORT_DWELL_TIME)
 
-        # Swap text and move signs into position
+        # Swap text
         self.play(ReplacementTransform(text_objects[2][0], text_objects[3][0]),
-                  ReplacementTransform(text_objects[2][1], text_objects[3][1]),
-                  plus_1.animate(run_time=ANIMATION_TIME).next_to(
-                      g.edges[(1, 2)], LEFT * 1.5),
-                  minus_1.animate(run_time=ANIMATION_TIME).next_to(
-                      g.edges[(0, 2)], DOWN),
-                  Create(minus_2))
+                  ReplacementTransform(text_objects[2][1], text_objects[3][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        # Move signs into position
+        util.bulk_play(self,
+                       plus_1.animate(run_time=ANIMATION_TIME).move_to(g.edges[(1, 2)]),
+                       minus_1.animate(run_time=ANIMATION_TIME).move_to(g.edges[(0, 2)]),
+                       Create(minus_2))
+
+        # Wipe all signs
+        self.play(FadeOut(plus_1), FadeOut(minus_1), FadeOut(minus_2))
 
         # Swap text and cycle signs into last config
         self.play(ReplacementTransform(text_objects[3][0], text_objects[4][0]),
-                  ReplacementTransform(text_objects[3][1], text_objects[4][1]),
-                  ReplacementTransform(minus_1, plus_2),
-                  ReplacementTransform(minus_2, plus_3))
+                  ReplacementTransform(text_objects[3][1], text_objects[4][1]))
+
+        # Show three signs
+        plus_1.move_to(g.edges[(1, 2)])
+        util.bulk_play(self,
+                       Create(plus_1),
+                       Create(plus_2),
+                       Create(plus_3))
 
         self.wait(LONG_DWELL_TIME)

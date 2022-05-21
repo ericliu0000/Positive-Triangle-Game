@@ -26,3 +26,6 @@ def text_generator(text, ref):
 
     return groups
 
+def bulk_play(self, *args, **kwargs):
+    for arg in args:
+        self.play(arg, **kwargs)
