@@ -15,7 +15,6 @@ class TriangleLadderGraph(Scene):
             w = 4
             print("last argument specifies number of vertices")
 
-        # TODO: layout is ugly. please fix
         graph = Graph(self.generate_vertices(w),
                       self.generate_edges(w),
                       layout=self.generate_layout(w))
@@ -57,20 +56,16 @@ class TriangleLadderGraph(Scene):
 
     def generate_layout(self, n):
         layout = {}
-
-        # note: this breaks after big graphs
         x_list = [(self.SPACING / 2) - (math.ceil(n / 2) / (2 / self.SPACING)) + (i * self.SPACING) for i in range(math.ceil(n / 2))]
-        print(x_list)
+
+        # Scale x-list to be between -7 and 7
         if (max(x_list) > 7):
-            # Scale x-list to be between -7 and 7
             x_list = [x * (7 / max(x_list)) for x in x_list]
-        print(x_list)
 
-
+        # Add top and bottom rows of points
         for i in range(int(n / 2)):
             layout[i + 1] = (x_list[i], self.SPACING / 2, 0)
         for i in range(int(n / 2), n):
             layout[i + 1] = (x_list[(n - i - 1)], -self.SPACING / 2, 0)
 
-        print(layout)
         return layout
