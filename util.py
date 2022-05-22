@@ -33,16 +33,16 @@ def bulk_play(self, *args, **kwargs):
         else:
             self.play(arg, **kwargs)
 
-def bulk_indicate(self, graph, edges):
+def bulk_indicate(self, graph, edges, **kwargs):
     actions = []
 
     # Get vertices from unique parts of edges
     vertices = list(set([edge[0] for edge in edges] + [edge[1] for edge in edges]))
 
     for edge in edges:
-        actions.append(Indicate(graph.edges[edge], color=INDICATE_COLOR, scale_factor=INDICATE_SCALE_FACTOR))
+        actions.append(Indicate(graph.edges[edge], color=INDICATE_COLOR, scale_factor=INDICATE_SCALE_FACTOR, **kwargs))
 
     for vertex in vertices:
-        actions.append(Indicate(graph.vertices[vertex], color=INDICATE_COLOR, scale_factor=INDICATE_SCALE_FACTOR))
+        actions.append(Indicate(graph.vertices[vertex], color=INDICATE_COLOR, scale_factor=INDICATE_SCALE_FACTOR, **kwargs))
 
     bulk_play(self, actions)
