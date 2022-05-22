@@ -33,17 +33,18 @@ def bulk_play(self, *args, **kwargs):
         else:
             self.play(arg, **kwargs)
 
-def bulk_indicate(self, graph, edges, **kwargs):
+def bulk_indicate(self, graph, edges, color=INDICATE_COLOR, include_vertices=True, **kwargs):
     actions = []
 
     # Get vertices from unique parts of edges
     vertices = list(set([edge[0] for edge in edges] + [edge[1] for edge in edges]))
 
     for edge in edges:
-        actions.append(Indicate(graph.edges[edge], color=INDICATE_COLOR, scale_factor=INDICATE_SCALE_FACTOR, **kwargs))
+        actions.append(Indicate(graph.edges[edge], color=color, scale_factor=INDICATE_SCALE_FACTOR, **kwargs))
 
-    for vertex in vertices:
-        actions.append(Indicate(graph.vertices[vertex], color=INDICATE_COLOR, scale_factor=INDICATE_SCALE_FACTOR, **kwargs))
+    if include_vertices:
+        for vertex in vertices:
+            actions.append(Indicate(graph.vertices[vertex], color=color, scale_factor=INDICATE_SCALE_FACTOR, **kwargs))
 
     bulk_play(self, actions)
 
@@ -54,3 +55,11 @@ def recolor(self, graph, edges, color):
         actions.append(graph.edges[edge].animate(run_time=BRIEF_ANIMATION_TIME).set_color(color))
 
     bulk_play(self, actions)
+
+def recolor_return(graph, edges, color):
+    actions = []
+
+    for edge in edges:
+        actions.append(graph.edges[edge].animate(run_time=SHORT_ANIMATION_TIME).set_color(color))
+
+    return actions
