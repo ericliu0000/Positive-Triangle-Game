@@ -26,3 +26,5 @@ The root folder contains a few files and scenes
 * `util.py` contains helper functions
 * `constants.py` contains project animation constants
 * Other files are the animations themselves
+
+Testing is self explanatory and may be removed shortly
