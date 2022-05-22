@@ -3,7 +3,7 @@ from sys import argv
 import math
 
 
-class TriangleLadderGraph(Scene):
+class AmendedLadderGraph(Scene):
     SPACING = 1.5
 
     def construct(self):
