@@ -1,7 +1,7 @@
 from manim import *
 from sys import argv
 import itertools
-import complete, wheel, graphs.amendedladder as amendedladder
+import complete, wheel, triangleladder
 
 
 class Vertexify(Scene):
