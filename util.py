@@ -46,3 +46,11 @@ def bulk_indicate(self, graph, edges, **kwargs):
         actions.append(Indicate(graph.vertices[vertex], color=INDICATE_COLOR, scale_factor=INDICATE_SCALE_FACTOR, **kwargs))
 
     bulk_play(self, actions)
+
+def recolor(self, graph, edges, color):
+    actions = []
+
+    for edge in edges:
+        actions.append(graph.edges[edge].animate(run_time=BRIEF_ANIMATION_TIME).set_color(color))
+
+    bulk_play(self, actions)

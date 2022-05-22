@@ -32,3 +32,12 @@ SINGLE_UNDERLINE = "underline=\"single\" underline_color=\"yellow\""
 DOUBLE_UNDERLINE = "underline=\"double\" underline_color=\"red\""
 POWER_LEVEL_GRADIENT = "from=\"GREEN\" to=\"BLUE\""
 ONE_COMPLETE_GRADIENT = "from=\"YELLOW_C\" to=\"RED\""
+
+# Layouts
+K5_LAYOUT = {
+    0: (0, 1.5, 0),
+    1: (-1.427, 0.464, 0),
+    2: (-0.882, -1.214, 0),
+    3: (0.882, -1.214, 0),
+    4: (1.427, 0.464, 0)
+}
