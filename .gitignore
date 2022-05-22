@@ -3,4 +3,4 @@
 *.pyo
 
 # manim build files
-media/**
+*media/
