@@ -27,6 +27,10 @@ class AdjacencyMatrix(Scene):
 
         text_objects = util.text_generator(text, DOWN * 1.5)
 
+        numerator = MathTex("24").shift(UP + RIGHT * 3.25)
+        comb = MathTex("\\frac{24}{6}").shift(UP + RIGHT * 3.25)
+        result = MathTex("\\frac{24}{6} = 4").shift(UP + RIGHT * 3.25)
+
         g = Graph(self.wheel.generate_vertices(5),
                   self.wheel.generate_edges(5),
                   layout="kamada_kawai",
@@ -100,13 +104,30 @@ class AdjacencyMatrix(Scene):
         self.play(ReplacementTransform(text_objects[2][0], text_objects[3][0]),
                   ReplacementTransform(text_objects[2][1], text_objects[3][1]))
 
+        # Swap matrix to 24
+        self.play(ReplacementTransform(m, numerator))
+
         self.wait(SHORT_DWELL_TIME)
+
+        # Swap 24 to 24/6
+        self.play(ReplacementTransform(numerator, comb))
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[3][0], text_objects[4][0]),
                   ReplacementTransform(text_objects[3][1], text_objects[4][1]))
 
-        self.wait(LONG_DWELL_TIME * 3)
+        # Swap 24/6 to 24/6 = 4
+        self.play(ReplacementTransform(comb, result))
+
+        # Blink all four triangles
+        for i in range(0, 8, 2):
+            util.bulk_indicate(self, g, v0_options[i], include_vertices=False)
+
+        # Deconstruct everything
+        self.play(Uncreate(text_objects[4][0]), Uncreate(text_objects[4][1]))
+        self.play(Uncreate(result), Uncreate(g))
+
+        self.wait(SHORT_DWELL_TIME)
 
     def make_a3(self, sel=-1, inc=2):
         original = Matrix([[self.mat_val[j] if i == j and self.mat_val[j] > 0 else "\\square" for i in range(5)] for j in range(5)]).shift(UP + RIGHT * 3.25)
