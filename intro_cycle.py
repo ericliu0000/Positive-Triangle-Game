@@ -8,7 +8,7 @@ class IntroCycle(Scene):
     complete = CompleteGraph()
 
     def construct(self):
-        text = """This is a 3-cycle graph.
+        text = f"""This is a 3-cycle graph <span foreground="red">C<sub>3</sub></span>
         It looks like a triangle.
         #
         In this game, the goal is to end

@@ -1,18 +1,29 @@
 from manim import *
 
+# Text configuration constants
 TEXT_COLOR = BLUE
 TOP_TEXT_BUFFER = 0.5
 BETWEEN_TEXT_BUFFER = 0.25
 
+# Animation time scale constnats
 ANIMATION_TIME = 1
 SHORT_DWELL_TIME = 0.6
 LONG_DWELL_TIME = 1
 
+# Plus and minus sign scale factors
 PLUS_SCALE = 0.5
 MINUS_SCALE = 0.12
 
+# Graph edge and vertex indication constants
 INDICATE_COLOR = YELLOW
 INDICATE_SCALE_FACTOR = 1.5
 
+# Power level label constants
 PL_CIRCLE_SIZE = 0.18
 PL_FONT_SIZE = 22
+
+# Vocabulary color constants
+POSITIVE_TRIANGLE_COLOR = "foreground=\"green\""
+GRAPH_COLOR = "foreground=\"red\""
+SINGLE_UNDERLINE = "underline=\"single\" underline_color=\"yellow\""
+DOUBLE_UNDERLINE = "underline=\"double\" underline_color=\"yellow\""
