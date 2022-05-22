@@ -1,7 +1,7 @@
 from manim import *
 
 # Text configuration constants
-TEXT_COLOR = BLUE
+TEXT_COLOR = "#edcaeb"
 TOP_TEXT_BUFFER = 0.5
 BETWEEN_TEXT_BUFFER = 0.25
 
@@ -26,4 +26,6 @@ PL_FONT_SIZE = 22
 POSITIVE_TRIANGLE_COLOR = "foreground=\"green\""
 GRAPH_COLOR = "foreground=\"red\""
 SINGLE_UNDERLINE = "underline=\"single\" underline_color=\"yellow\""
-DOUBLE_UNDERLINE = "underline=\"double\" underline_color=\"yellow\""
+DOUBLE_UNDERLINE = "underline=\"double\" underline_color=\"red\""
+POWER_LEVEL_GRADIENT = "from=\"GREEN\" to=\"BLUE\""
+ONE_COMPLETE_GRADIENT = "from=\"YELLOW_C\" to=\"RED\""

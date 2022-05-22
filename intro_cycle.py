@@ -8,14 +8,14 @@ class IntroCycle(Scene):
     complete = CompleteGraph()
 
     def construct(self):
-        text = f"""This is a 3-cycle graph <span foreground="red">C<sub>3</sub></span>
+        text = f"""This is a 3-cycle graph <span {GRAPH_COLOR}>C<sub>3</sub></span>
         It looks like a triangle.
         #
         In this game, the goal is to end
-        with a <span foreground="green">positive triangle</span>,
+        with a <span {POSITIVE_TRIANGLE_COLOR}>positive triangle</span>,
         #
-        having an <span underline="single" underline_color="yellow">odd number</span> of positive edges,
-        and an <span underline="double" underline_color="red">even number</span> of negative edges.
+        having an <span {SINGLE_UNDERLINE}>odd number</span> of positive edges,
+        and an <span {DOUBLE_UNDERLINE}>even number</span> of negative edges.
         #
         So, the game ends with
         two minus signs,

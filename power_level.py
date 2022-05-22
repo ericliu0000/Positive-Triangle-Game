@@ -8,14 +8,14 @@ class PowerLevel(Scene):
     wheel = WheelGraph()
 
     def construct(self):
-        text = """Here is a wheel graph,
-        <span foreground="red">W<sub>4</sub></span>
+        text = f"""Here is a wheel graph,
+        <span {GRAPH_COLOR}>W<sub>4</sub></span>
         #
         Each vertex is a member of at least 
         1 triangle within the graph.
         #
         An edge is a member to as many triangles
-        as its <gradient from="GREEN" to="ORANGE">power level.</gradient> 
+        as its <gradient {POWER_LEVEL_GRADIENT}>power level.</gradient> 
         #
         For example, this bottom edge is a 
         member of one triangle,
@@ -23,14 +23,14 @@ class PowerLevel(Scene):
         but it is also a member of
         this triangle.
         #
-        So, this is the <gradient from="GREEN" to="ORANGE">power level</gradient> of
+        So, this is the <gradient {POWER_LEVEL_GRADIENT}>power level</gradient> of
         each edge in this graph. 
         #
         Here is another example, with
-        <span foreground="red">W<sub>5</sub></span>
+        <span {GRAPH_COLOR}>W<sub>5</sub></span>
         #
-        For wheel graphs on <span underline="double" underline_color="orange">5 or more vertices</span>,
-        edge <gradient from="GREEN" to="ORANGE">power levels</gradient> follow this pattern.
+        For wheel graphs on <span {DOUBLE_UNDERLINE}>5 or more vertices</span>,
+        edge <gradient {POWER_LEVEL_GRADIENT}>power levels</gradient> follow this pattern.
         """
 
         text_objects = util.text_generator(text, DOWN)
