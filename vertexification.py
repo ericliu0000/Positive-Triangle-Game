@@ -16,10 +16,15 @@ class Vertexification(Scene):
 
         text_objects = util.text_generator(text, DOWN * 1.5)
 
-        g = Graph(self.wheel.generate_vertices(5),
-                  self.wheel.generate_edges(5),
-                  layout="kamada_kawai", labels=True).shift(UP)
+        g = Graph(self.wheel.generate_vertices(7),
+                  self.wheel.generate_edges(7),
+                  layout=W7_LAYOUT, labels=True).shift(UP).scale(1.2)
 
-        self.play(Create(g))
+        xg = Graph(self.vertexify.generate_vertices(g.edges),
+                     self.vertexify.generate_edges(g.edges),
+                    layout=XW7_LAYOUT, labels=True).shift(UP).scale(1.2)
+
+
+        self.play(Create(xg), Create(g))
 
         self.wait(LONG_DWELL_TIME * 3)
