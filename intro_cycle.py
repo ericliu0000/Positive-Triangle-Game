@@ -52,13 +52,13 @@ class IntroCycle(Scene):
         self.play(Create(text_objects[0][0]),
                   Create(text_objects[0][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Swap text
         self.play(ReplacementTransform(text_objects[0][0], text_objects[1][0]),
                   ReplacementTransform(text_objects[0][1], text_objects[1][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Swap text and add signs
         self.play(ReplacementTransform(text_objects[1][0], text_objects[2][0]),
@@ -66,7 +66,7 @@ class IntroCycle(Scene):
                   Create(plus_1),
                   Create(minus_1))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Swap text
         self.play(ReplacementTransform(text_objects[2][0], text_objects[3][0]),
@@ -92,7 +92,7 @@ class IntroCycle(Scene):
                        Create(plus_2),
                        Create(plus_3))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Uncreate everything
         util.bulk_play(self,
