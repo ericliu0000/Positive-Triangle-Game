@@ -4,3 +4,6 @@
 
 # manim build files
 *media/
+
+# java
+*.class
