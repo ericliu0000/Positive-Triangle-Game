@@ -18,12 +18,11 @@ class Vertexification(Scene):
 
         g = Graph(self.wheel.generate_vertices(7),
                   self.wheel.generate_edges(7),
-                  layout=W7_LAYOUT, labels=True).shift(UP).scale(1.2)
+                  layout=W7_LAYOUT, labels=False).shift(UP + LEFT * 3).scale(1.2)
 
         xg = Graph(self.vertexify.generate_vertices(g.edges),
                      self.vertexify.generate_edges(g.edges),
-                    layout=XW7_LAYOUT, labels=True).shift(UP).scale(1.2)
-
+                    layout=XW7_LAYOUT, labels=False).shift(UP + RIGHT * 3).scale(1.2)
 
         self.play(Create(xg), Create(g))
 
