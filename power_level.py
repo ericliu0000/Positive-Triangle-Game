@@ -40,7 +40,6 @@ class PowerLevel(Scene):
                   layout="planar").shift(UP)
 
         # Create PL labels (text with circle background)
-        # TODO: change edge_bg to use Circle.surround
         edge_labels = [MarkupText("2", font_size=PL_FONT_SIZE, color=YELLOW) for _ in range(6)]
         edge_bg = [Circle(PL_CIRCLE_SIZE, LIGHT_PINK, fill_opacity=0.8) for _ in range(6)]
 

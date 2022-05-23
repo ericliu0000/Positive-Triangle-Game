@@ -11,7 +11,7 @@ class Vertexification(Scene):
 
     def construct(self):
         text = f"""This is a <gradient {VERTEXIFIED_GRADIENT} offset=",1">vertexified</gradient> graph of a wheel graph,
-        <span {GRAPH_COLOR}>X(W)<sub>7</sub></span>
+        <span {GRAPH_COLOR}>W<sub>7</sub>(X)</span>
         #
         <gradient {VERTEXIFIED_GRADIENT} offset=",1">Vertexified</gradient> graphs have vertices made from
         the edges of the <span {SINGLE_UNDERLINE}>original graph</span>, and
@@ -19,7 +19,7 @@ class Vertexification(Scene):
         edges formed between <gradient {MEMBERS_GRADIENT}>members</gradient> of identical
         triangles in the <span {SINGLE_UNDERLINE}>original</span> graph.
         #
-        <span {GRAPH_COLOR}>X(W)<sub>7</sub></span> is the <span {SINGLE_UNDERLINE}>original</span> graph,
+        <span {GRAPH_COLOR}>W<sub>7</sub></span> is the <span {SINGLE_UNDERLINE}>original</span> graph,
         and is the source of vertices.
         # 
         These edges are <gradient {MEMBERS_GRADIENT}>members</gradient> of the same 
