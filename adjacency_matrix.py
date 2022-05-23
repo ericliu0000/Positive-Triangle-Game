@@ -44,11 +44,13 @@ class AdjacencyMatrix(Scene):
         self.play(Create(text_objects[0][0]), Create(text_objects[0][1]))
         self.play(Create(m))
 
+        self.wait(LONG_DWELL_TIME)
+
         # Cycle text
         self.play(ReplacementTransform(text_objects[0][0], text_objects[1][0]),
                   ReplacementTransform(text_objects[0][1], text_objects[1][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[1][0], text_objects[2][0]),
@@ -107,7 +109,7 @@ class AdjacencyMatrix(Scene):
         # Swap matrix to 24
         self.play(ReplacementTransform(m, numerator))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Swap 24 to 24/6
         self.play(ReplacementTransform(numerator, comb))
@@ -118,6 +120,8 @@ class AdjacencyMatrix(Scene):
 
         # Swap 24/6 to 24/6 = 4
         self.play(ReplacementTransform(comb, result))
+        
+        self.wait(LONG_DWELL_TIME)
 
         # Blink all four triangles
         for i in range(0, 8, 2):
