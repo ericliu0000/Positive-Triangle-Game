@@ -12,7 +12,7 @@ public class Render {
         File cwd = new File(".");
 
         ArrayList<String> files = new ArrayList<String>();
-        ArrayList<String> ignore = new ArrayList<String>(Arrays.asList(new String[] {"constants.py", "renderAll.py"}));
+        ArrayList<String> ignore = new ArrayList<String>(Arrays.asList(new String[] {"constants.py", "util.py"}));
 
         // Get all Python files in directory not in exclude 
         for (File i : cwd.listFiles()) {
