@@ -11,16 +11,16 @@ class PowerLevel(Scene):
         text = f"""Here is a wheel graph,
         <span {GRAPH_COLOR}>W<sub>4</sub></span>
         #
-        Each vertex is a member of at least 
+        Each vertex is a <gradient {MEMBERS_GRADIENT}>member</gradient> of at least 
         1 triangle within the graph.
         #
-        An edge is a member to as many triangles
+        An edge is a <gradient {MEMBERS_GRADIENT}>member</gradient> to as many triangles
         as its <gradient {POWER_LEVEL_GRADIENT}>power level.</gradient> 
         #
         For example, this bottom edge is a 
-        member of one triangle,
+        <gradient {MEMBERS_GRADIENT}>member</gradient> of one triangle,
         #
-        but it is also a member of
+        but it is also a <gradient {MEMBERS_GRADIENT}>member</gradient> of
         this triangle.
         #
         So, this is the <gradient {POWER_LEVEL_GRADIENT}>power level</gradient> of
@@ -69,7 +69,7 @@ class PowerLevel(Scene):
         self.play(ReplacementTransform(text_objects[1][0], text_objects[2][0]),
                   ReplacementTransform(text_objects[1][1], text_objects[2][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Highlight one edge
         self.play(g.edges[(0, 1)].animate(run_time=ANIMATION_TIME).set_color(GREEN))
@@ -88,6 +88,8 @@ class PowerLevel(Scene):
         # Point out other triangle
         util.bulk_indicate(self, g, [(0, 1), (0, 2), (1, 2)])
 
+        self.wait(LONG_DWELL_TIME)
+
         # Cycle text
         self.play(ReplacementTransform(text_objects[4][0], text_objects[5][0]),
                   ReplacementTransform(text_objects[4][1], text_objects[5][1]))
@@ -96,7 +98,7 @@ class PowerLevel(Scene):
         self.play(*[Create(bg) for bg in edge_bg])
         self.play(*[Write(label) for label in edge_labels])
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Uncreate everything
         util.bulk_play(self,
@@ -104,7 +106,7 @@ class PowerLevel(Scene):
                        [Uncreate(bg) for bg in edge_bg] + [Uncreate(label) for label in edge_labels],
                        Uncreate(g))
 
-        self.wait(LONG_DWELL_TIME)
+        self.wait(SHORT_DWELL_TIME)
 
         # Create second graph (W5)
         g = Graph(self.wheel.generate_vertices(5),
@@ -129,6 +131,8 @@ class PowerLevel(Scene):
         # Create labels
         self.play(*[Create(bg) for bg in edge_bg])
         self.play(*[Write(label) for label in edge_labels])
+
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[6][0], text_objects[7][0]),

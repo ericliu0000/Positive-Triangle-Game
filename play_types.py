@@ -11,7 +11,7 @@ class PlayTypes(Scene):
         text = f"""This is a triangular ladder graph
         with 9 vertices, <span {GRAPH_COLOR}>T<sub>9</sub></span>.
         #
-        Initially, a marked edge makes its member
+        Initially, a marked edge makes its <gradient {MEMBERS_GRADIENT}>member</gradient>
         triangles <gradient {ONE_COMPLETE_GRADIENT}>1-complete</gradient> during optimal play.
         #
         To <span {DOUBLE_UNDERLINE}>maximize</span> the game's moves, players
