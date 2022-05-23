@@ -1,6 +1,7 @@
 from manim import MarkupText
 from constants import *
 
+
 def text_generator(text, ref):
     lines = text.split("\n")
     groups = []
@@ -26,12 +27,14 @@ def text_generator(text, ref):
 
     return groups
 
+
 def bulk_play(self, *args, **kwargs):
     for arg in args:
         if type(arg) == list:
             self.play(*arg)
         else:
             self.play(arg, **kwargs)
+
 
 def bulk_indicate(self, graph, edges, color=INDICATE_COLOR, include_vertices=True, **kwargs):
     actions = []
@@ -48,6 +51,16 @@ def bulk_indicate(self, graph, edges, color=INDICATE_COLOR, include_vertices=Tru
 
     bulk_play(self, actions)
 
+
+def bulk_indicate_vertices(self, graph, vertices, color=INDICATE_COLOR, **kwargs):
+    actions = []
+
+    for vertex in vertices:
+        actions.append(Indicate(graph.vertices[vertex], color=color, scale_factor=INDICATE_SCALE_FACTOR, **kwargs))
+
+    bulk_play(self, actions)
+
+
 def recolor(self, graph, edges, color):
     actions = []
 
@@ -55,11 +68,3 @@ def recolor(self, graph, edges, color):
         actions.append(graph.edges[edge].animate(run_time=BRIEF_ANIMATION_TIME).set_color(color))
 
     bulk_play(self, actions)
-
-def recolor_return(graph, edges, color):
-    actions = []
-
-    for edge in edges:
-        actions.append(graph.edges[edge].animate(run_time=SHORT_ANIMATION_TIME).set_color(color))
-
-    return actions
