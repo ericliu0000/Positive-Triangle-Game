@@ -138,27 +138,3 @@ class AdjacencyMatrix(Scene):
         self.mat_val[sel] += inc
 
         return Matrix([[self.mat_val[j] if i == j and self.mat_val[j] > 0 else "\\square" for i in range(5)] for j in range(5)]).shift(UP + RIGHT * 3.25)
-
-    def test(self, text_objects):
-        # Cycle all text
-        self.play(Create(text_objects[0][0]), Create(text_objects[0][1]))
-
-        self.wait(SHORT_DWELL_TIME)
-
-        self.play(ReplacementTransform(text_objects[0][0], text_objects[1][0]),
-                  ReplacementTransform(text_objects[0][1], text_objects[1][1]))
-
-        self.wait(SHORT_DWELL_TIME)
-
-        self.play(ReplacementTransform(text_objects[1][0], text_objects[2][0]),
-                  ReplacementTransform(text_objects[1][1], text_objects[2][1]))
-
-        self.wait(SHORT_DWELL_TIME)
-
-        self.play(ReplacementTransform(text_objects[2][0], text_objects[3][0]),
-                  ReplacementTransform(text_objects[2][1], text_objects[3][1]))
-
-        self.wait(SHORT_DWELL_TIME)
-
-        self.play(ReplacementTransform(text_objects[3][0], text_objects[4][0]),
-                  ReplacementTransform(text_objects[3][1], text_objects[4][1]))
