@@ -46,20 +46,20 @@ class Vertexification(Scene):
         self.play(Create(xg))
         util.bulk_play(self, Create(text_objects[0][0]), Create(text_objects[0][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[0][0], text_objects[1][0]),
                   ReplacementTransform(text_objects[0][1], text_objects[1][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text and reposition graph
         self.play(ReplacementTransform(text_objects[1][0], text_objects[2][0]),
                   ReplacementTransform(text_objects[1][1], text_objects[2][1]),
                   xg.animate(run_time=ANIMATION_TIME).shift(RIGHT * 3))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text and move in graph
         self.play(ReplacementTransform(text_objects[2][0], text_objects[3][0]),
@@ -72,7 +72,7 @@ class Vertexification(Scene):
         util.bulk_indicate(self, g, g.edges, run_time=SHORT_ANIMATION_TIME, include_vertices=False, rate_func=rate_functions.linear)
         util.bulk_indicate_vertices(self, xg, xg.vertices, run_time=LONG_ANIMATION_TIME, rate_func=rate_functions.there_and_back_with_pause)
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         self.play(g.animate(run_time=BRIEF_ANIMATION_TIME).set_color(WHITE))
 
@@ -84,7 +84,7 @@ class Vertexification(Scene):
         util.bulk_indicate(self, g, [(0, 3), (2, 3)], include_vertices=False, run_time=SHORT_ANIMATION_TIME, rate_func=rate_functions.linear)
         util.bulk_indicate_vertices(self, xg, [3, 9], run_time=LONG_ANIMATION_TIME, rate_func=rate_functions.there_and_back_with_pause)
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[4][0], text_objects[5][0]),
@@ -93,13 +93,13 @@ class Vertexification(Scene):
         # Reset edges, but indicate the resultant edge
         self.play(g.animate(run_time=BRIEF_ANIMATION_TIME).set_color(WHITE))
         util.bulk_indicate(self, xg, [(3, 9)], color=PURE_BLUE, run_time=LONG_ANIMATION_TIME, rate_func=rate_functions.there_and_back_with_pause)
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[5][0], text_objects[6][0]),
                   ReplacementTransform(text_objects[5][1], text_objects[6][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Deconstruct everything
         self.play(Uncreate(text_objects[6][0]), Uncreate(text_objects[6][1]))
