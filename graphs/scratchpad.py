@@ -47,7 +47,7 @@ class Scratchpad(Scene):
         # text = MathTex("T=\\frac{1}{6}\\sum_{i=1}^{n} A(G)^{3}_{[i][i]}")
         # text = MathTex("\\frac{deg(X(E))}{2}=PL(E)")
 
-        text = MathTex("\\frac{\\sum_{j=0}^{j_{max}}\\varepsilon(G)}{2}=PL(E_{i})")
+        text = MathTex("\\frac{\\sum_{j=0}^{j_{max}}\\varepsilon(G)_{[i][j]}}{2}=PL(E_{i})")
 
         self.add(text.scale(2.5))
 

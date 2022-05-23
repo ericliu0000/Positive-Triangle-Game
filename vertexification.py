@@ -14,7 +14,7 @@ class Vertexification(Scene):
         <span {GRAPH_COLOR}>W<sub>7</sub>(X)</span>
         #
         <gradient {VERTEXIFIED_GRADIENT} offset=",1">Vertexified</gradient> graphs have vertices made from
-        the edges of the <span {SINGLE_UNDERLINE}>original graph</span>, and
+        the edges of the <span {SINGLE_UNDERLINE}>original</span> graph, and
         #
         edges formed between <gradient {MEMBERS_GRADIENT}>members</gradient> of identical
         triangles in the <span {SINGLE_UNDERLINE}>original</span> graph.

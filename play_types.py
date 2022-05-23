@@ -9,7 +9,7 @@ class PlayTypes(Scene):
 
     def construct(self):
         text = f"""This is a triangular ladder graph
-        with 9 vertices, <span {GRAPH_COLOR}>T<sub>9</sub></span>.
+        with 9 vertices, <span {GRAPH_COLOR}>TL<sub>9</sub></span>.
         #
         Initially, a marked edge makes its <gradient {MEMBERS_GRADIENT}>member</gradient>
         triangles <gradient {ONE_COMPLETE_GRADIENT}>1-complete</gradient> during optimal play.
@@ -68,7 +68,7 @@ class PlayTypes(Scene):
         self.play(Create(g))
         util.bulk_play(self, Create(text_objects[0][0]), Create(text_objects[0][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text and mark one edge
         self.play(ReplacementTransform(text_objects[0][0], text_objects[1][0]),
@@ -77,7 +77,7 @@ class PlayTypes(Scene):
 
         util.bulk_indicate(self, g, [(1, 2), (1, 8), (2, 8)], run_time=LONG_ANIMATION_TIME)
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[1][0], text_objects[2][0]),
@@ -92,19 +92,19 @@ class PlayTypes(Scene):
         self.play(ReplacementTransform(text_objects[2][0], text_objects[3][0]),
                   ReplacementTransform(text_objects[2][1], text_objects[3][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[3][0], text_objects[4][0]),
                   ReplacementTransform(text_objects[3][1], text_objects[4][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Mark the minus edges and indicate positive triangle
         util.bulk_play(self, Create(minus_1), Create(minus_2))
         util.bulk_indicate(self, g, [(4, 5), (4, 6), (5, 6)], run_time=LONG_ANIMATION_TIME)
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Deconstruct everything
         self.play(Uncreate(text_objects[4][0]), Uncreate(text_objects[4][1]))
@@ -126,6 +126,7 @@ class PlayTypes(Scene):
                   ReplacementTransform(text_objects[4][1], text_objects[5][1]))
 
         util.bulk_indicate(self, g, [(1, 8), (2, 8), (2, 7), (3, 7), (3, 6), (4, 6)], run_time=LONG_ANIMATION_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[5][0], text_objects[6][0]),
@@ -133,12 +134,13 @@ class PlayTypes(Scene):
 
         # Mark signs
         util.bulk_play(self, *[Create(obj, run_time=BRIEF_ANIMATION_TIME) for obj in [plus_1, plus_2, plus_3]])
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[6][0], text_objects[7][0]),
                   ReplacementTransform(text_objects[6][1], text_objects[7][1]))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[7][0], text_objects[8][0]),
@@ -146,6 +148,7 @@ class PlayTypes(Scene):
 
         # Add PL1 edge to 1-complete
         self.play(Create(plus_4))
+        self.wait(LONG_DWELL_TIME)
 
         # Cycle text
         self.play(ReplacementTransform(text_objects[8][0], text_objects[9][0]),
@@ -154,12 +157,12 @@ class PlayTypes(Scene):
         # Add final moves
         util.bulk_play(self, Create(minus_1), Create(minus_2))
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Indicate positive triangle
         util.bulk_indicate(self, g, [(4, 5), (4, 6), (5, 6)], run_time=LONG_ANIMATION_TIME)
 
-        self.wait(SHORT_DWELL_TIME)
+        self.wait(LONG_DWELL_TIME)
 
         # Final deconstruction
         self.play(Uncreate(text_objects[9][0]), Uncreate(text_objects[9][1]))
