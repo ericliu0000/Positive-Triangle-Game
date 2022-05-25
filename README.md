@@ -1,6 +1,6 @@
 # MA4500 Graph Theory with REX Math Final Project
 
-# Presentation animations for problem "Positive Triangle Game"
+## Presentation animations for problem "Positive Triangle Game"
 
 ### Cooper Xie, Emmy Tang, Eric Liu
 
@@ -27,4 +27,4 @@ The root folder contains a few files and scenes
 * `constants.py` contains project animation constants
 * Other files are the animations themselves
 
-Testing is self explanatory and may be removed shortly
+Testing is for experimenting with matrices and manim operations.
